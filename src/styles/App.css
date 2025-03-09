@@ -5,12 +5,12 @@ body {
 .container {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 0 2em;
 }
 
 
 .header {
-  margin: 2em 0;
+  margin: 2em 0 2em 0;
   color: var(--primary);
   display: flex;
   align-items: center;
