@@ -1,27 +1,34 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@layer reset, icons, init, design;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@import url(normalize.css) layer(reset);
+@import url(../assets/icons/typography.css) layer(icons);
+@import url(App.css) layer(design);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@media (prefers-color-scheme: light) {
+@layer init {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color-scheme: light;
+
+    --primary: #f2f2f2;
+    --secondary: #2d3142;
+    --background: #404e5c;
+    --blocks: #d9d9d9;
+    --label: #ecdfcc;
+    --down: #cf1259;
+    --up: #55917f;
+
+    /* --transition-time: 0.25s; */
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  /* Dark mode – v devtools Ctrl + Shift + P = vyhledat scheme a emulovat na dark */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #2d3142;
+      --secondary: #f2f2f2;
+      --background: #ecdfcc;
+      --blocks: #3c3d37;
+      --label: #ecdfcc;
+      --down: #c62e2e;
+      --up: #399918;
+    }
   }
 }

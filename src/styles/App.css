@@ -1,0 +1,16 @@
+[class^="icon--"] {
+  font-size: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 2em;
+}
+.header span.icon--chart::after {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #fff;
+    color: aqua;
+}
