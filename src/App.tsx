@@ -1,14 +1,17 @@
-import { useState } from "react";
+// import { useState } from "react";
+import LogoIcon from "./components/LogoIcon.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <>
-      <header className="header">
-        <span className="icon-">cheveron-up</span>
-        <p>Traiding Simulator</p>
-      </header>
+      <div className="container">
+        <header className="header">
+          <LogoIcon />
+          <p>Trading Simulator</p>
+        </header>
+      </div>
     </>
   );
 }

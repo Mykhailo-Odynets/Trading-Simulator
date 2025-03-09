@@ -8,13 +8,13 @@
   :root {
     color-scheme: light;
 
-    --primary: #f2f2f2;
-    --secondary: #2d3142;
-    --background: #404e5c;
-    --blocks: #d9d9d9;
+    --primary: #2d3142;
+    --secondary: #f2f2f2;
+    --background: #ecdfcc;
+    --blocks: #3c3d37;
     --label: #ecdfcc;
-    --down: #cf1259;
-    --up: #55917f;
+    --down: #c62e2e;
+    --up: #399918;
 
     /* --transition-time: 0.25s; */
   }
@@ -22,13 +22,13 @@
   /* Dark mode – v devtools Ctrl + Shift + P = vyhledat scheme a emulovat na dark */
   @media (prefers-color-scheme: dark) {
     :root {
-      --primary: #2d3142;
-      --secondary: #f2f2f2;
-      --background: #ecdfcc;
-      --blocks: #3c3d37;
+      --primary: #f2f2f2;
+      --secondary: #2d3142;
+      --background: #404e5c;
+      --blocks: #d9d9d9;
       --label: #ecdfcc;
-      --down: #c62e2e;
-      --up: #399918;
+      --down: #cf1259;
+      --up: #55917f;
     }
   }
 }

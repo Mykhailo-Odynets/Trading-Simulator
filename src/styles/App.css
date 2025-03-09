@@ -1,16 +1,25 @@
-[class^="icon--"] {
-  font-size: 0;
+body {
+  background-color: var(--background);
 }
 
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+
 .header {
+  margin: 2em 0;
+  color: var(--primary);
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 0.5em;
   font-size: 2em;
 }
-.header span.icon--chart::after {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: #fff;
-    color: aqua;
+.header span {
+  scale: 1.5;
+}
+.header p {
+  margin: 0;
 }
