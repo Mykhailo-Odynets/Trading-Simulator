@@ -1,13 +1,15 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import LogoIcon from "./components/LogoIcon.jsx";
 import DynamicChart from "./components/DynamicChart.jsx";
+import Button from "./components/Button.js";
+import HistorySection from "./components/HistorySection.js";
 
 function App() {
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState(1000);
 
-  const handleBalanceChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setBalance(Number(event.target.value));
-  };
+  // const handleBalanceChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setBalance(Number(event.target.value));
+  // };
 
   return (
     <>
@@ -21,17 +23,29 @@ function App() {
             <div className="betZone">
               <DynamicChart />
               <div className="betZone__inputSide">
-                <p className="small">Your balance:</p>
-                <p>{balance}</p>
+                <div className="betZone__text">
+                  <p className="small">Your balance:</p>
+                  <p>{balance}</p>
+                </div>
                 <input
                   type="number"
-                  value={balance}
-                  onChange={handleBalanceChange}
+                  // value={}
                 />
+                <Button iconText="icon-triangle-down" btnColor="var(--down)" />
+                <Button iconText="icon-triangle-up" btnColor="var(--up)" />
               </div>
             </div>
           </article>
-          <article></article>
+          <article>
+            <div className="history__titles">
+              <p>Time</p>
+              <p>Bet</p>
+              <p>Way</p>
+              <p>Final</p>
+              <p>Benefit</p>
+            </div>
+            <HistorySection />
+          </article>
         </main>
       </div>
     </>
