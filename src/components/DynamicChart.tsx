@@ -56,7 +56,11 @@ const createOptions = (color: string, chartColor: string) => ({
   plugins: { legend: { display: false } },
 });
 
-export default function DynamicChart() {
+interface DynamicChartProps {
+  onDataUpdate: (data: number) => void;
+}
+
+export default function DynamicChart({ onDataUpdate }: DynamicChartProps) {
   const [chartColors, setChartColors] = useState(getChartColors);
   const [chartData, setChartData] = useState<ChartData>({
     labels,
@@ -89,16 +93,31 @@ export default function DynamicChart() {
   }, []);
 
   useEffect(() => {
+    // const interval = setInterval(() => {
+    //   setChartData((prevData) => ({
+    //     ...prevData,
+    //     datasets: prevData.datasets.map((dataset) => ({
+    //       ...dataset,
+    //       data: dataset.data.map(
+    //         (value) => value + Math.floor(Math.random() * 10)
+    //       ),
+    //     })),
+    //   }));
+    // }, 1000);
     const interval = setInterval(() => {
-      setChartData((prevData) => ({
-        ...prevData,
-        datasets: prevData.datasets.map((dataset) => ({
-          ...dataset,
-          data: dataset.data.map(
-            (value) => value + Math.floor(Math.random() * 10)
-          ),
-        })),
-      }));
+      setChartData((prevData) => {
+        const updatedData = {
+          ...prevData,
+          datasets: prevData.datasets.map((dataset) => ({
+            ...dataset,
+            data: dataset.data.map(
+              (value) => value + Math.floor(Math.random() * 10)
+            ),
+          })),
+        };
+        onDataUpdate(updatedData.datasets[0].data[0]);
+        return updatedData;
+      });
     }, 1000);
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");

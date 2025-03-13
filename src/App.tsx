@@ -5,11 +5,15 @@ import Button from "./components/Button.js";
 import HistorySection from "./components/HistorySection.js";
 
 function App() {
-  const [balance, setBalance] = useState(1000);
+  // const [balance, setBalance] = useState(1000);
+  const [lastChartData, setLastChartData] = useState<number | null>(null);
 
   // const handleBalanceChange = (event: ChangeEvent<HTMLInputElement>) => {
   //   setBalance(Number(event.target.value));
   // };
+  const handleDataUpdate = (data: number) => {
+    setLastChartData(data);
+  };
 
   return (
     <>
@@ -21,11 +25,11 @@ function App() {
         <main>
           <article>
             <div className="betZone">
-              <DynamicChart />
+              <DynamicChart onDataUpdate={handleDataUpdate} />
               <div className="betZone__inputSide">
                 <div className="betZone__text">
                   <p className="small">Your balance:</p>
-                  <p>{balance}</p>
+                  <p>{lastChartData}</p>
                 </div>
                 <input
                   type="number"
