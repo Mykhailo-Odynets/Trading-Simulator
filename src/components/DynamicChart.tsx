@@ -43,6 +43,7 @@ const getChartColors = () => {
 
 const createOptions = (color: string, chartColor: string) => ({
   responsive: true,
+  // maintainAspectRatio: false,
   scales: {
     x: {
       ticks: { color },
@@ -93,17 +94,6 @@ export default function DynamicChart({ onDataUpdate }: DynamicChartProps) {
   }, []);
 
   useEffect(() => {
-    // const interval = setInterval(() => {
-    //   setChartData((prevData) => ({
-    //     ...prevData,
-    //     datasets: prevData.datasets.map((dataset) => ({
-    //       ...dataset,
-    //       data: dataset.data.map(
-    //         (value) => value + Math.floor(Math.random() * 10)
-    //       ),
-    //     })),
-    //   }));
-    // }, 1000);
     const interval = setInterval(() => {
       setChartData((prevData) => {
         const updatedData = {
@@ -130,5 +120,9 @@ export default function DynamicChart({ onDataUpdate }: DynamicChartProps) {
     };
   }, [updateChartColors]);
 
-  return <Line options={options} data={chartData} />;
+  return (
+    <div className="chartContainer">
+      <Line options={options} data={chartData} />
+    </div>
+  );
 }

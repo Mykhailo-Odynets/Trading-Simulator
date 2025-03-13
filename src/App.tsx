@@ -28,12 +28,13 @@ function App() {
               <DynamicChart onDataUpdate={handleDataUpdate} />
               <div className="betZone__inputSide">
                 <div className="betZone__text">
-                  <p className="small">Your balance:</p>
+                  <p>Your balance:</p>
                   <p>{lastChartData}</p>
                 </div>
                 <input
                   type="number"
                   // value={}
+                  placeholder="Enter bet..."
                 />
                 <Button iconText="icon-triangle-down" btnColor="var(--down)" />
                 <Button iconText="icon-triangle-up" btnColor="var(--up)" />
