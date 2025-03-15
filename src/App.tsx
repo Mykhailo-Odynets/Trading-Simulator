@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LogoIcon from "./components/LogoIcon.jsx";
-import DynamicChart from "./components/DynamicChart.jsx";
+import DynamicChart from "./components/DynamicChart/DynamicChart.tsx";
 import Button from "./components/Button.js";
 import HistorySection from "./components/HistorySection.js";
+import { useChartData } from "./hooks/useChartData.tsx";
+
 
 function App() {
-  // const [balance, setBalance] = useState(1000);
   const [lastChartData, setLastChartData] = useState<number | null>(null);
+  const chartData = useChartData();
 
+  // const [balance, setBalance] = useState(1000);
   // const handleBalanceChange = (event: ChangeEvent<HTMLInputElement>) => {
   //   setBalance(Number(event.target.value));
   // };
+
   const handleDataUpdate = (data: number) => {
     setLastChartData(data);
   };
@@ -25,7 +29,7 @@ function App() {
         <main>
           <article>
             <div className="betZone">
-              <DynamicChart onDataUpdate={handleDataUpdate} />
+              <DynamicChart onDataUpdate={handleDataUpdate} chartData={chartData} />
               <div className="betZone__inputSide">
                 <div className="betZone__text">
                   <p>Your balance:</p>
