@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LogoIcon from "./components/LogoIcon.jsx";
 import DynamicChart from "./components/DynamicChart/DynamicChart.tsx";
 import Button from "./components/Button.js";
