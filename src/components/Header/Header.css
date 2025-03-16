@@ -1,0 +1,15 @@
+.header {
+  margin: 2em 0 2em 0;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.6em;
+  font-weight: 800;
+}
+.header span {
+  font-size: 3em;
+}
+.header p {
+  margin: 0;
+}

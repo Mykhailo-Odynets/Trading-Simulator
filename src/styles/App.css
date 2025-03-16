@@ -13,24 +13,6 @@ body {
 
 
 
-.header {
-  margin: 2em 0 2em 0;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  font-size: 1.6em;
-  font-weight: 800;
-}
-.header span {
-  font-size: 3em;
-}
-.header p {
-  margin: 0;
-}
-
-
-
 
 
 .betZone {
@@ -55,10 +37,11 @@ body {
 
 .betZone__text p {
   color: var(--primary);
+  margin: 0 0 0.5em 0;
 }
 .betZone__text p:last-of-type {
-  font-size: 2em;
-  margin: 0;
+  font-size: 3em;
+  margin-bottom: 0.25em;
 }
 
 

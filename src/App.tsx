@@ -1,10 +1,9 @@
 import { useState } from "react";
-import LogoIcon from "./components/LogoIcon.jsx";
 import DynamicChart from "./components/DynamicChart/DynamicChart.tsx";
 import Button from "./components/Button.js";
 import HistorySection from "./components/HistorySection.js";
 import { useChartData } from "./hooks/useChartData.tsx";
-
+import Header from "./components/Header/Header.tsx";
 
 function App() {
   const [lastChartData, setLastChartData] = useState<number | null>(null);
@@ -22,24 +21,20 @@ function App() {
   return (
     <>
       <div className="container">
-        <header className="header">
-          <LogoIcon />
-          <p>Trading Simulator</p>
-        </header>
+        <Header />
         <main>
           <article>
             <div className="betZone">
-              <DynamicChart onDataUpdate={handleDataUpdate} chartData={chartData} />
+              <DynamicChart
+                onDataUpdate={handleDataUpdate}
+                chartData={chartData}
+              />
               <div className="betZone__inputSide">
                 <div className="betZone__text">
                   <p>Your balance:</p>
                   <p>{lastChartData}</p>
                 </div>
-                <input
-                  type="number"
-                  // value={}
-                  placeholder="Enter bet..."
-                />
+                <input type="number" placeholder="Enter bet..." />
                 <Button iconText="icon-triangle-down" btnColor="var(--down)" />
                 <Button iconText="icon-triangle-up" btnColor="var(--up)" />
               </div>

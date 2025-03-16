@@ -14,7 +14,6 @@ import ChartData from "../../utils/ChartData";
 import getChartColors from "../../utils/ChartColors";
 import "./DynamicChart.css";
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,7 +23,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
 
 const createOptions = (color: string, chartColor: string) => ({
   responsive: true,
@@ -43,12 +41,14 @@ const createOptions = (color: string, chartColor: string) => ({
 });
 
 interface DynamicChartProps {
-  onDataUpdate: (data: number) => void,
+  onDataUpdate: (data: number) => void;
   chartData: ChartData;
 }
 
-
-export default function DynamicChart({ onDataUpdate, chartData }: DynamicChartProps) {
+export default function DynamicChart({
+  onDataUpdate,
+  chartData,
+}: DynamicChartProps) {
   const chartColors = getChartColors();
   const options = createOptions(chartColors.color, chartColors.chartColor);
 

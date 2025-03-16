@@ -19,41 +19,40 @@ export const useChartData = () => {
     ],
   });
 
-    useEffect(() => {
+  useEffect(() => {
+    setChartData((prevData) => {
+      const updatedData = {
+        ...prevData,
+        datasets: prevData.datasets.map((dataset) => ({
+          ...dataset,
+          backgroundColor: chartColors.color,
+          borderColor: chartColors.chartColor,
+        })),
+      };
+      return updatedData;
+    });
+  }, [chartColors]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
       setChartData((prevData) => {
         const updatedData = {
           ...prevData,
           datasets: prevData.datasets.map((dataset) => ({
             ...dataset,
-            backgroundColor: chartColors.color,
-            borderColor: chartColors.chartColor,
+            data: dataset.data.map(
+              (value) => value + Math.floor(Math.random() * 10)
+            ),
           })),
         };
         return updatedData;
       });
-    }, [chartColors]);
+    }, 1000);
 
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setChartData((prevData) => {
-          const updatedData = {
-            ...prevData,
-            datasets: prevData.datasets.map((dataset) => ({
-              ...dataset,
-              data: dataset.data.map(
-                (value) => value + Math.floor(Math.random() * 10)
-              ),
-            })),
-          };
-          return updatedData;
-        });
-      }, 3000);
-
-      return () => {
-        clearInterval(interval);
-      };
-    }, []);
-
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return chartData;
 };
