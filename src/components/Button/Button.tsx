@@ -1,3 +1,5 @@
+import "./Button.css";
+
 type Props = {
   iconText: string;
   btnColor: string;
@@ -5,7 +7,7 @@ type Props = {
 
 export default function Button({ iconText, btnColor }: Props) {
   return (
-    <button style={{ background: btnColor }}>
+    <button className="Button" style={{ background: btnColor }}>
       <span className="icon-">{iconText}</span>
     </button>
   );

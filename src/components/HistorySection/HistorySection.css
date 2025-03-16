@@ -1,0 +1,27 @@
+.table {
+  margin: 0 auto;
+  margin-top: 4em;
+  margin-bottom: 2em;
+  border-spacing: 0 10px;
+  text-align: center;
+}
+/* .table caption {
+  color: var(--primary);
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+} */
+.table thead th {
+  color: var(--primary);
+  font-size: 1.5em;
+  font-weight: normal;
+}
+:is(.table) td,
+th {
+  padding: 0.5em 2em;
+}
+.table tbody td {
+  background-color: var(--blocks);
+  color: var(--secondary);
+  font-size: 1em;
+}

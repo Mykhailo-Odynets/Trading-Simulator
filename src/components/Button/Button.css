@@ -1,0 +1,18 @@
+.Button {
+  min-height: var(--inputsHeight);
+  border: 0;
+  border-radius: var(--borderRadius);
+  transition: scale 0.2s, opacity 0.1s;
+}
+.Button:hover {
+  scale: 1.1;
+}
+.Button:active {
+  opacity: 0.8;
+}
+.Button span {
+  transform: scaleX(1.5);
+  display: inline-block;
+  color: var(--secondary);
+  font-size: 4em;
+}

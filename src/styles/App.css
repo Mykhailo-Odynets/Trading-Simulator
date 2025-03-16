@@ -45,9 +45,22 @@ body {
 }
 
 
-.betZone button span {
-  transform: scaleX(1.5);
-  display: inline-block;
+.betZone__inputSide input {
+  min-height: var(--inputsHeight);
+  padding: 0.5em 1em;
+  border: 1px solid var(--primary);
+  border-radius: var(--borderRadius);
+  font-size: 1.5em !important;
+  background-color: var(--label);
   color: var(--secondary);
-  font-size: 4em;
+  transition: border-color 0.3s,
+              box-shadow 0.3s;
+}
+.betZone__inputSide input:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 5px var(--secondary);
+  outline: none;
+}
+.betZone__inputSide input:hover {
+  border-color: var(--secondary);
 }

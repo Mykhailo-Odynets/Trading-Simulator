@@ -1,12 +1,29 @@
 import { useState } from "react";
 import DynamicChart from "./components/DynamicChart/DynamicChart.tsx";
-import Button from "./components/Button.js";
-import HistorySection from "./components/HistorySection.js";
+import Button from "./components/Button/Button.js";
+import HistorySection from "./components/HistorySection/HistorySection.js";
 import { useChartData } from "./hooks/useChartData.tsx";
 import Header from "./components/Header/Header.tsx";
+import HistoryData from "./utils/HistoryData.ts";
 
 function App() {
   const [lastChartData, setLastChartData] = useState<number | null>(null);
+  const [historyData, setHistoryData] = useState<HistoryData[]>([
+    {
+      time: new Date(),
+      bet: 123,
+      direction: "up",
+      finalValue: 642,
+      benefit: 642 - 123,
+    },
+    {
+      time: new Date(),
+      bet: 123,
+      direction: "up",
+      finalValue: 642,
+      benefit: 642 - 123,
+    },
+  ]);
   const chartData = useChartData();
 
   // const [balance, setBalance] = useState(1000);
@@ -41,14 +58,7 @@ function App() {
             </div>
           </article>
           <article>
-            <div className="history__titles">
-              <p>Time</p>
-              <p>Bet</p>
-              <p>Way</p>
-              <p>Final</p>
-              <p>Benefit</p>
-            </div>
-            <HistorySection />
+            <HistorySection data={historyData} />
           </article>
         </main>
       </div>

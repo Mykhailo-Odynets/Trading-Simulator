@@ -16,7 +16,8 @@
     --down: #c62e2e;
     --up: #399918;
 
-    /* --transition-time: 0.25s; */
+    --inputsHeight: 50px;
+    --borderRadius: 20px;
   }
 
   /* Dark mode – v devtools Ctrl + Shift + P = vyhledat scheme a emulovat na dark */
