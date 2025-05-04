@@ -1,39 +1,58 @@
-import { useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import DynamicChart from "./components/DynamicChart/DynamicChart.tsx";
 import Button from "./components/Button/Button.js";
 import HistorySection from "./components/HistorySection/HistorySection.js";
 import { useChartData } from "./hooks/useChartData.tsx";
 import Header from "./components/Header/Header.tsx";
 import HistoryData from "./utils/HistoryData.ts";
+import BetData from "./utils/BetData.ts";
 
 function App() {
-  const [lastChartData, setLastChartData] = useState<number | null>(null);
+  const [balance, setBalance] = useState<number>(10000);
+
+  const [inputValue, setInputValue] = useState<number | null>(null);
+  const [lastChartData, setLastChartData] = useState<number>();
+  const [bet, setBet] = useState<BetData | null>(null);
+
   const [historyData, setHistoryData] = useState<HistoryData[]>([
     {
       time: new Date(),
-      bet: 123,
+      bet: 250,
       direction: "up",
       finalValue: 642,
-      benefit: 642 - 123,
+      benefit: 642 - 250,
     },
     {
       time: new Date(),
-      bet: 123,
-      direction: "up",
-      finalValue: 642,
-      benefit: 642 - 123,
+      bet: 100,
+      direction: "down",
+      finalValue: 946,
+      benefit: 100 - 946,
     },
   ]);
+
   const chartData = useChartData();
 
-  // const [balance, setBalance] = useState(1000);
-  // const handleBalanceChange = (event: ChangeEvent<HTMLInputElement>) => {
-  //   setBalance(Number(event.target.value));
-  // };
 
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(Number(event.target.value));
+  };
   const handleDataUpdate = (data: number) => {
     setLastChartData(data);
   };
+  const handleBtnClick = (btn: "up" | "down") => {
+    if (inputValue === null || bet !== null || balance - inputValue < 0 || inputValue === 0) return;
+    setInputValue(null);
+    setBet({
+      bet: inputValue,
+      direction: btn,
+      currentChartData: lastChartData ?? 0
+    });
+    setBalance((balance) => balance - inputValue);
+
+
+  }
+
 
   return (
     <>
@@ -49,11 +68,11 @@ function App() {
               <div className="betZone__inputSide">
                 <div className="betZone__text">
                   <p>Your balance:</p>
-                  <p>{lastChartData}</p>
+                  <p>{balance}</p>
                 </div>
-                <input type="number" placeholder="Enter bet..." />
-                <Button iconText="icon-triangle-down" btnColor="var(--down)" />
-                <Button iconText="icon-triangle-up" btnColor="var(--up)" />
+                <input type="number" value={inputValue ?? ""} placeholder={"Enter bet..."} onChange={handleInputChange} />
+                <Button iconText="icon-triangle-down" btnColor="var(--down)" onBtnClick={handleBtnClick} />
+                <Button iconText="icon-triangle-up" btnColor="var(--up)" onBtnClick={handleBtnClick} />
               </div>
             </div>
           </article>

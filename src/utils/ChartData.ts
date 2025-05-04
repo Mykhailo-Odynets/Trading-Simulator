@@ -6,5 +6,8 @@ export default interface ChartData {
     backgroundColor: string;
     borderColor: string;
     borderWidth: number;
+    fill?: boolean;
+    tension?: number;
+    pointRadius?: number;
   }[];
 }

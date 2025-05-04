@@ -24,20 +24,43 @@ ChartJS.register(
   Legend
 );
 
+
 const createOptions = (color: string, chartColor: string) => ({
   responsive: true,
   maintainAspectRatio: false,
+  animation: {
+    duration: 500,
+    easing: "linear" as const,
+  },
+  transitions: {
+    active: {
+      animation: {
+        duration: 400
+      }
+    }
+  },
   scales: {
     x: {
-      ticks: { color },
+      ticks: { 
+        color,
+        maxRotation: 0,
+        autoSkip: false
+      },
       grid: { color: chartColor },
     },
     y: {
       ticks: { color },
       grid: { color: chartColor },
+      beginAtZero: false,
     },
   },
-  plugins: { legend: { display: false } },
+  plugins: { 
+    legend: { display: false },
+    tooltip: {
+      mode: 'index' as const,
+      intersect: false,
+    }
+  },
 });
 
 interface DynamicChartProps {
@@ -54,7 +77,7 @@ export default function DynamicChart({
 
   useEffect(() => {
     if (chartData.datasets[0].data.length > 0) {
-      onDataUpdate(chartData.datasets[0].data[0]);
+      onDataUpdate(chartData.datasets[0].data[chartData.datasets[0].data.length - 1]);
     }
   }, [chartData, onDataUpdate]);
 

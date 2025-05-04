@@ -64,3 +64,9 @@ body {
 .betZone__inputSide input:hover {
   border-color: var(--secondary);
 }
+
+@media (max-width: 768px) {
+  .betZone {
+    grid-template-columns: 1fr;
+  }
+}
