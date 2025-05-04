@@ -32,7 +32,7 @@ function App() {
       inputValue === null ||
       bet !== null ||
       balance - inputValue < 0 ||
-      inputValue === 0
+      inputValue <= 0
     )
       return;
 
