@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ChartData from "../utils/ChartData.ts";
+import Dataset from "../utils/Dataset";
 import { useChartColors } from "./useChartColors.tsx";
 
 const period: number = 2000;
@@ -49,6 +50,20 @@ export const useChartData = () => {
     ],
   });
 
+  const addBet = (dataset: Dataset): void => {
+    setChartData((prevData) => ({
+      ...prevData,
+      datasets: [...prevData.datasets, dataset],
+    }));
+  };
+
+  const removeBet = (): void => {
+    setChartData((prevData) => ({
+      ...prevData,
+      datasets: [prevData.datasets[0]],
+    }));
+  };
+
   useEffect(() => {
     setChartData((prevData) => {
       const updatedData = {
@@ -86,5 +101,9 @@ export const useChartData = () => {
     };
   }, []);
 
-  return chartData;
+  return {
+    ...chartData,
+    addBet,
+    removeBet,
+  };
 };
